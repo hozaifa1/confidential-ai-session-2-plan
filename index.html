@@ -12,7 +12,7 @@
       --bg: #FAFAF8;
       --surface: #FFFFFF;
       --text: #121417;
-      --muted: #6B7280;
+      --muted: #525866;
       --border: #E5E7EB;
       --border-dark: #121417;
       --crimson: #9B1C1C;
@@ -22,27 +22,46 @@
       --radius: 12px;
     }
 
+    ::selection {
+      background: var(--text);
+      color: var(--bg);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-      line-height: 1.35;
+      line-height: 1.4;
       padding: 1.5rem;
       max-width: 900px;
       margin: 0 auto;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
     }
 
     @media (min-width: 768px) {
       body {
-        padding: 3.5rem 2rem;
+        padding: 4rem 2rem;
       }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.25rem 1rem;
+      }
+    }
+
+    h1, h2, h3, h4 {
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
 
     /* TYPOGRAPHY */
@@ -64,7 +83,7 @@
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 8vw, 4.8rem);
+      font-size: clamp(2rem, 7.5vw, 4.8rem);
       font-weight: 800;
       line-height: 1.05;
       letter-spacing: -0.04em;
@@ -76,9 +95,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem 1.5rem;
-      font-size: clamp(1rem, 3vw, 1.25rem);
+      font-size: clamp(0.95rem, 3vw, 1.25rem);
       color: var(--muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       padding-bottom: 2rem;
       border-bottom: 2px solid var(--border-dark);
     }
@@ -91,14 +110,14 @@
 
     /* SECTIONS */
     section {
-      margin-top: 3.5rem;
+      margin-top: 4rem;
     }
 
     .section-label {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -109,7 +128,7 @@
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
 
     /* BIG STAT / DECISION CARDS */
@@ -130,6 +149,12 @@
     @media (min-width: 768px) {
       .card {
         padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.25rem 1rem;
       }
     }
 
@@ -160,9 +185,10 @@
     }
 
     .decision-content p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
       color: var(--muted);
-      line-height: 1.4;
+      line-height: 1.45;
+      max-width: 68ch;
     }
 
     /* TIMELINE */
@@ -191,7 +217,7 @@
     .time-duration {
       display: block;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--muted);
       margin-top: 0.2rem;
     }
@@ -204,16 +230,17 @@
     }
 
     .timeline-content p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
       color: var(--muted);
       line-height: 1.45;
+      max-width: 68ch;
     }
 
     .tag-pill {
       display: inline-block;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 0.2rem 0.5rem;
+      padding: 0.25rem 0.55rem;
       border-radius: 4px;
       margin-top: 0.6rem;
     }
@@ -273,6 +300,7 @@
       font-size: 1.05rem;
       color: var(--muted);
       line-height: 1.45;
+      max-width: 68ch;
     }
 
     /* DELIVERABLES */
@@ -314,6 +342,23 @@
       text-align: center;
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #FFF;
+        color: #000;
+        padding: 0;
+        max-width: 100%;
+      }
+      .card, .timeline-item, .demo-card, .file-item {
+        break-inside: avoid;
+        border-color: #CCC;
+      }
+      .badge, .hero-meta {
+        border-color: #000;
+      }
     }
   </style>
 </head>
@@ -395,7 +440,6 @@
 
   <!-- TIMELINE -->
   <section>
-    <div class="section-label mono">Minute by Minute</div>
     <h2 class="section-title">The 60-Minute Session Flow</h2>
     <div class="timeline">
 
@@ -518,7 +562,6 @@
 
   <!-- LIVE DEMOS -->
   <section>
-    <div class="section-label mono">Practical Execution</div>
     <h2 class="section-title">The Four Live Demos</h2>
     <div class="demo-grid">
 
@@ -559,7 +602,6 @@
 
   <!-- DELIVERABLES -->
   <section>
-    <div class="section-label mono">Distributed Assets</div>
     <h2 class="section-title">Files Given to Participants</h2>
     <div class="stack">
 
