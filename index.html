@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 2 Plan — The Confidential AI Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --surface: #FFFFFF;
+      --text: #121417;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --border-dark: #121417;
+      --crimson: #9B1C1C;
+      --crimson-light: #FEF2F2;
+      --green: #15803D;
+      --green-light: #F0FDF4;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      line-height: 1.35;
+      padding: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 3.5rem 2rem;
+      }
+    }
+
+    /* TYPOGRAPHY */
+    .mono {
+      font-family: 'Space Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-dark);
+      background: var(--surface);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 8vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border-dark);
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-top: 3.5rem;
+    }
+
+    .section-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    /* BIG STAT / DECISION CARDS */
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 2rem;
+      }
+    }
+
+    .card:hover {
+      border-color: var(--border-dark);
+    }
+
+    .decision-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: baseline;
+    }
+
+    .num-tag {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      font-family: 'Space Mono', monospace;
+      color: var(--border-dark);
+      line-height: 1;
+    }
+
+    .decision-content h3 {
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .decision-content p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* TIMELINE */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (min-width: 768px) {
+      .timeline-item {
+        grid-template-columns: 180px 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .time-badge {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      font-family: 'Space Mono', monospace;
+      color: var(--text);
+    }
+
+    .time-duration {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .timeline-content h4 {
+      font-size: clamp(1.25rem, 3.5vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-top: 0.6rem;
+    }
+
+    .tag-crimson {
+      background: var(--crimson-light);
+      color: var(--crimson);
+      border: 1px solid #FECACA;
+    }
+
+    .tag-green {
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid #BBF7D0;
+    }
+
+    /* DEMO GRID */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .demo-card {
+      background: var(--surface);
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .demo-card .demo-num {
+      font-size: 0.9rem;
+      font-weight: 800;
+      font-family: 'Space Mono', monospace;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .demo-card h4 {
+      font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .demo-card p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* DELIVERABLES */
+    .file-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    @media (min-width: 600px) {
+      .file-item {
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+    }
+
+    .file-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .file-desc {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="badge mono">Session 2 Plan · Confidential AI Analyst</div>
+    <h1 class="hero-title">Avoiding Data Traps & Live Reconciliation.</h1>
+    <div class="hero-meta mono">
+      <span>Sat 12 Sep 2026</span>
+      <span>·</span>
+      <span>10:00 PM BST</span>
+      <span>·</span>
+      <span>60 Mins</span>
+      <span>·</span>
+      <span>Google Meet</span>
+    </div>
+  </header>
+
+  <!-- DECISIONS MADE -->
+  <section>
+    <div class="section-label mono">Strategic Alignments</div>
+    <h2 class="section-title">Core Decisions Made</h2>
+    <div class="stack">
+
+      <div class="card">
+        <div class="decision-row">
+          <div class="num-tag">01</div>
+          <div class="decision-content">
+            <h3>Schema Prompting Moved to Session 3</h3>
+            <p>Pushed custom Python script generation to Week 3 as a 25-minute instructor demo. Keeps Week 2 laser-focused on reconciliations and data traps.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="decision-row">
+          <div class="num-tag">02</div>
+          <div class="decision-content">
+            <h3>Vendor vs AP Ledger Scenario Selected</h3>
+            <p>Directly answers daily work for both corporate finance teams and audit leads testing unrecorded liabilities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="decision-row">
+          <div class="num-tag">03</div>
+          <div class="decision-content">
+            <h3>Graceful Homework Relief Opening</h3>
+            <p>Attendees are relieved of homework guilt immediately. Presenter drives with a real desk file to demonstrate identification traps.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="decision-row">
+          <div class="num-tag">04</div>
+          <div class="decision-content">
+            <h3>Universal Script Upgrade (universal_masker.py)</h3>
+            <p>Processes arbitrary column headers and free-text notes without requiring a hardcoded "Remarks" column.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="decision-row">
+          <div class="num-tag">05</div>
+          <div class="decision-content">
+            <h3>Delivered as Standard Python & PDF Guide</h3>
+            <p>Avoids corporate firewall and antivirus quarantines caused by compiled .exe or .bat attachments.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section>
+    <div class="section-label mono">Minute by Minute</div>
+    <h2 class="section-title">The 60-Minute Session Flow</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:00</span>
+          <span class="time-duration mono">5 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Opening & Homework Relief</h4>
+          <p>Relieve attendee guilt, present the instructor sample ledger, and pivot directly into data traps.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:05</span>
+          <span class="time-duration mono">6 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Trap 1: Re-identification</h4>
+          <p>The jigsaw puzzle trap. Cross-referencing industry sector, operating port, and turnover pinpoints masked identities.</p>
+          <span class="tag-pill tag-crimson mono">Data Exposure Risk</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:11</span>
+          <span class="time-duration mono">6 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Trap 2: Small Cell Sizes (n=1)</h4>
+          <p>The aggregation trap. Department salary averages expose the exact compensation of solitary directors or specialists.</p>
+          <span class="tag-pill tag-crimson mono">Data Exposure Risk</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:17</span>
+          <span class="time-duration mono">5 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>The Reconciliation Problem</h4>
+          <p>Vendor statement claims BDT 14,825,000. Internal AP ledger records BDT 14,441,000. Unexplained BDT 384,000 variance across 60 rows.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:22</span>
+          <span class="time-duration mono">6 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Live Universal Masking</h4>
+          <p>Run universal_masker.py on both workbooks. Scans arbitrary headers, swaps vendor tokens, scales amounts, and shifts dates in 3 seconds.</p>
+          <span class="tag-pill tag-green mono">Zero-Cloud Execution</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:28</span>
+          <span class="time-duration mono">7 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>The 3-Minute Live AI Reconciliation</h4>
+          <p>Paste masked tables into AI. Isolates transposition error (BDT 36,000), unrecorded invoice (BDT 293,000), and disputed debit note (BDT 55,000).</p>
+          <span class="tag-pill tag-green mono">Core Analytical Payoff</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:35</span>
+          <span class="time-duration mono">5 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Local De-Masking</h4>
+          <p>Restore real vendor identities and actual balances on the local workstation using the private key file. AI never sees authentic figures.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:40</span>
+          <span class="time-duration mono">7 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Universal Masker Tool Walkthrough</h4>
+          <p>Review the script architecture. How it identifies text cells across multiple tabs without depending on column headers.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:47</span>
+          <span class="time-duration mono">10 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Live Q&A & Feedback Buffer</h4>
+          <p>Strict 2-minute quiet window for Google Form submissions, followed by live answers using pre-seeded cheat sheet questions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <span class="time-badge">10:57</span>
+          <span class="time-duration mono">3 MIN</span>
+        </div>
+        <div class="timeline-content">
+          <h4>Session Wrap & Week 3 Teaser</h4>
+          <p>Send script package and guide. Preview Week 3: generating board decks, memos, and custom schema-first code.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIVE DEMOS -->
+  <section>
+    <div class="section-label mono">Practical Execution</div>
+    <h2 class="section-title">The Four Live Demos</h2>
+    <div class="demo-grid">
+
+      <div class="demo-card">
+        <div>
+          <div class="demo-num">DEMO 01</div>
+          <h4>Re-identification Test</h4>
+          <p>Unmasking an anonymous client in 10 seconds using industry, port location, and turnover clues.</p>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div>
+          <div class="demo-num">DEMO 02</div>
+          <h4>The n=1 Salary Leak</h4>
+          <p>Exposing a department head's confidential pay inside an aggregated summary table.</p>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div>
+          <div class="demo-num">DEMO 03</div>
+          <h4>The 3-Minute Reconciliation</h4>
+          <p>Isolating the BDT 384,000 variance and 3 planted breaks on masked accounts payable records.</p>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div>
+          <div class="demo-num">DEMO 04</div>
+          <h4>Universal Masker Run</h4>
+          <p>Scrubbing an unformatted, multi-tab financial workbook in 3 seconds flat.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section>
+    <div class="section-label mono">Distributed Assets</div>
+    <h2 class="section-title">Files Given to Participants</h2>
+    <div class="stack">
+
+      <div class="file-item">
+        <div class="file-name">universal_masker.py</div>
+        <div class="file-desc">Local spreadsheet redaction engine for arbitrary column layouts.</div>
+      </div>
+
+      <div class="file-item">
+        <div class="file-name">UNIVERSAL_MASKER_GUIDE.pdf</div>
+        <div class="file-desc">Visual installation and execution guide for macOS and Windows.</div>
+      </div>
+
+      <div class="file-item">
+        <div class="file-name">Session2_RECONCILIATION_VENDOR_AP.xlsx</div>
+        <div class="file-desc">60-row dual-ledger exercise workbook with planted audit variances.</div>
+      </div>
+
+      <div class="file-item">
+        <div class="file-name">PARTICIPANT_ONE_PAGER_SESSION_2.pdf</div>
+        <div class="file-desc">Reference card covering quasi-identifier risks and prompt safety checklists.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p class="mono">The Confidential AI Analyst · MyCFO BD · 2026</p>
+  </footer>
+
+</body>
+</html>
