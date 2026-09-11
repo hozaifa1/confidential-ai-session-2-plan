@@ -97,7 +97,7 @@
       gap: 0.75rem 1.5rem;
       font-size: clamp(0.95rem, 3vw, 1.25rem);
       color: var(--muted);
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
       padding-bottom: 2rem;
       border-bottom: 2px solid var(--border-dark);
     }
@@ -113,16 +113,6 @@
       margin-top: 4rem;
     }
 
-    .section-label {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
     .section-title {
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
@@ -131,64 +121,11 @@
       margin-bottom: 1.75rem;
     }
 
-    /* BIG STAT / DECISION CARDS */
+    /* STACK */
     .stack {
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      transition: border-color 0.2s;
-    }
-
-    @media (min-width: 768px) {
-      .card {
-        padding: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 1.25rem 1rem;
-      }
-    }
-
-    .card:hover {
-      border-color: var(--border-dark);
-    }
-
-    .decision-row {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1.25rem;
-      align-items: baseline;
-    }
-
-    .num-tag {
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      font-weight: 800;
-      font-family: 'Space Mono', monospace;
-      color: var(--border-dark);
-      line-height: 1;
-    }
-
-    .decision-content h3 {
-      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.4rem;
-    }
-
-    .decision-content p {
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      color: var(--muted);
-      line-height: 1.45;
-      max-width: 68ch;
     }
 
     /* TIMELINE */
@@ -255,6 +192,61 @@
       background: var(--green-light);
       color: var(--green);
       border: 1px solid #BBF7D0;
+    }
+
+    /* SCRIPT SECTION (WHAT TO SAY) */
+    .script-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+
+    @media (min-width: 768px) {
+      .script-card {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .script-card {
+        padding: 1.25rem 1rem;
+      }
+    }
+
+    .script-card:hover {
+      border-color: var(--border-dark);
+    }
+
+    .script-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .script-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--border-dark);
+    }
+
+    .script-moment {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .script-quote {
+      font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+      border-left: 3px solid var(--border-dark);
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
     }
 
     /* DEMO GRID */
@@ -352,7 +344,7 @@
         padding: 0;
         max-width: 100%;
       }
-      .card, .timeline-item, .demo-card, .file-item {
+      .timeline-item, .script-card, .demo-card, .file-item {
         break-inside: avoid;
         border-color: #CCC;
       }
@@ -378,65 +370,6 @@
       <span>Google Meet</span>
     </div>
   </header>
-
-  <!-- DECISIONS MADE -->
-  <section>
-    <div class="section-label mono">Strategic Alignments</div>
-    <h2 class="section-title">Core Decisions Made</h2>
-    <div class="stack">
-
-      <div class="card">
-        <div class="decision-row">
-          <div class="num-tag">01</div>
-          <div class="decision-content">
-            <h3>Schema Prompting Moved to Session 3</h3>
-            <p>Pushed custom Python script generation to Week 3 as a 25-minute instructor demo. Keeps Week 2 laser-focused on reconciliations and data traps.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="decision-row">
-          <div class="num-tag">02</div>
-          <div class="decision-content">
-            <h3>Vendor vs AP Ledger Scenario Selected</h3>
-            <p>Directly answers daily work for both corporate finance teams and audit leads testing unrecorded liabilities.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="decision-row">
-          <div class="num-tag">03</div>
-          <div class="decision-content">
-            <h3>Graceful Homework Relief Opening</h3>
-            <p>Attendees are relieved of homework guilt immediately. Presenter drives with a real desk file to demonstrate identification traps.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="decision-row">
-          <div class="num-tag">04</div>
-          <div class="decision-content">
-            <h3>Universal Script Upgrade (universal_masker.py)</h3>
-            <p>Processes arbitrary column headers and free-text notes without requiring a hardcoded "Remarks" column.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="decision-row">
-          <div class="num-tag">05</div>
-          <div class="decision-content">
-            <h3>Delivered as Standard Python & PDF Guide</h3>
-            <p>Avoids corporate firewall and antivirus quarantines caused by compiled .exe or .bat attachments.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- TIMELINE -->
   <section>
@@ -554,6 +487,84 @@
         <div class="timeline-content">
           <h4>Session Wrap & Week 3 Teaser</h4>
           <p>Send script package and guide. Preview Week 3: generating board decks, memos, and custom schema-first code.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPEAKER SCRIPT: WHAT TO SAY -->
+  <section>
+    <h2 class="section-title">Speaker Script: Key Moments</h2>
+    <div class="stack">
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:00</span>
+          <span class="script-moment mono">The Opening Relief</span>
+        </div>
+        <div class="script-quote">
+          "If you did not have time to mask a file this week between month-ends and audits, you are excused. I masked a real file from my own desk and ran straight into the two traps we need to cover tonight."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:05</span>
+          <span class="script-moment mono">Trap 1: Re-identification</span>
+        </div>
+        <div class="script-quote">
+          "Take this row. The name says CUSTOMER-01. But the sector is raw cotton import, the location is Chittagong port, and revenue sits at BDT 450M. Anyone in this market knows who that is in ten seconds. Swapping the name did nothing when the rest of the row reads like their public biography."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:11</span>
+          <span class="script-moment mono">Trap 2: Small Cell Sizes</span>
+        </div>
+        <div class="script-quote">
+          "We thought we were safe because we only uploaded departmental salary averages. But Internal Audit has one person. That is not an average. You just posted Karim's exact salary to a cloud server."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:17</span>
+          <span class="script-moment mono">The Reconciliation Hook</span>
+        </div>
+        <div class="script-quote">
+          "Here are two ledgers covering 60 transactions. The supplier statement claims BDT 14.8M, while our own ledger shows BDT 14.4M. Chasing that BDT 384,000 difference usually eats an entire afternoon. We are going to find the break live in three minutes using masked data."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:28</span>
+          <span class="script-moment mono">The 3-Minute Payoff</span>
+        </div>
+        <div class="script-quote">
+          "The AI caught all three breaks right here: a 36,000 digit swap, a missing month-end invoice, and an uncredited debit note. That accounts for every penny. Throughout the run, not a single real supplier name or account number ever left this room."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:35</span>
+          <span class="script-moment mono">The Local De-Mask</span>
+        </div>
+        <div class="script-quote">
+          "When the model flags SUPPLIER-04, you check the local key on your machine. It points to Meghna Packaging. Dividing by 0.6137 gives you the real balance. The AI handled the analysis, but the secrets stayed right on your desk."
+        </div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-header">
+          <span class="script-time">10:57</span>
+          <span class="script-moment mono">The Close</span>
+        </div>
+        <div class="script-quote">
+          "You do not have to choose between client confidentiality and getting your work done quickly. The numbers stay on your machine while the break gets solved in minutes. Download the script tonight, and we will see you next Saturday."
         </div>
       </div>
 
